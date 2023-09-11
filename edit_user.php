@@ -1,19 +1,21 @@
 <?php
 
-function connection(){
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
+include("connection.php");
+$con = connection();
 
-    $bd = "users_crud_php";
+$id=$_POST["id"];
+$name = $_POST['name'];
+$lastname = $_POST['lastname'];
+$password = $_POST['password'];
+$email = $_POST['email'];
 
-    $connect=mysqli_connect($host, $user, $pass);
+$sql="UPDATE users SET name='$name', lastname='$lastname', password='$password', email='$email' WHERE id='$id'";
+$query = mysqli_query($con, $sql);
 
-    mysqli_select_db($connect, $bd);
-
-    return $connect;
+if($query){
+    Header("Location: index.php");
+}else{
 
 }
-
 
 ?>

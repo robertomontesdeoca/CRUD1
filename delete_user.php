@@ -1,19 +1,17 @@
 <?php
 
-function connection(){
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
+include("connection.php");
+$con = connection();
 
-    $bd = "users_crud_php";
+$id=$_GET["id"];
 
-    $connect=mysqli_connect($host, $user, $pass);
+$sql="DELETE FROM users WHERE id='$id'";
+$query = mysqli_query($con, $sql);
 
-    mysqli_select_db($connect, $bd);
-
-    return $connect;
+if($query){
+    Header("Location: index.php");
+}else{
 
 }
-
 
 ?>

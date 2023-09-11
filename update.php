@@ -1,3 +1,13 @@
+<?php 
+    include("connection.php");
+    $con=connection();
+
+    $id=$_GET['id'];
+
+    $sql="SELECT * FROM users WHERE id='$id'";
+    $query=mysqli_query($con, $sql);
+
+    $row=mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
